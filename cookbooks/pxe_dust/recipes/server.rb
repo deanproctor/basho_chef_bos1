@@ -32,6 +32,30 @@ directory "#{node['tftp']['directory']}/pxelinux.cfg" do
   mode "0755"
 end
 
+cookbook_file "#{node['tftp']['directory']}/menu.c32" do
+  source "menu.c32"
+  mode 0644
+  owner "root"
+  group "root"
+  action :create_if_missing
+end
+
+cookbook_file "#{node['tftp']['directory']}/pxelinux.cfg/default" do
+  source "pxelinux.cfg"
+  mode 0644
+  owner "root"
+  group "root"
+  action :create_if_missing
+end
+
+cookbook_file "#{node['tftp']['directory']}/pxelinux.cfg/smartos.conf" do
+  source "smartos.conf"
+  mode 0644
+  owner "root"
+  group "root"
+  action :create_if_missing
+end
+
 #location of the full stack installers
 directory "/var/www/opscode-full-stack" do
   mode "0755"
@@ -160,7 +184,7 @@ pxe_dust.each do |id|
     mac = mac_address.gsub(/:/, '-')
     mac.downcase!
     template "#{node['tftp']['directory']}/pxelinux.cfg/01-#{mac}" do
-      source "pxelinux.cfg.erb"
+      source "ubuntu.conf.erb"
       mode "0644"
       variables(
         :platform => platform,
@@ -212,14 +236,15 @@ link "#{node['tftp']['directory']}/pxelinux.0" do
   to "default/pxelinux.0"
 end
 
-template "#{node['tftp']['directory']}/pxelinux.cfg/default"  do
-  source "pxelinux.cfg.erb"
+template "#{node['tftp']['directory']}/pxelinux.cfg/ubuntu.conf"  do
+  source "ubuntu.conf.erb"
   mode "0644"
   variables(
     :platform => default['platform'],
     :id => 'default',
     :arch => default['arch'],
-    :domain => default['domain']
+    :domain => default['domain'],
+    :version => default['version']
     )
   action :create
 end
@@ -228,3 +253,37 @@ end
 link "/var/www/validation.pem" do
   to Chef::Config[:validation_key]
 end
+
+bash "build smartos tftp image" do
+  user "root"
+  code <<-EOH
+  mkdir -p /mnt/smartos
+  mkdir -p /tmp/smartos_build/smartos-installer
+
+  cd /tmp/smartos_build
+
+  # Download latest SmartOS ISO
+  curl -k -s -O https://download.joyent.com/pub/iso/latest.iso
+
+  # Download syslinux
+  curl -k -s -O http://www.kernel.org/pub/linux/utils/boot/syslinux/syslinux-4.05.tar.gz
+
+  # Copy the platform directory from the SmartOS ISO
+  mount -o loop,ro latest.iso /mnt/smartos
+  cp -Rp /mnt/smartos/platform /tmp/smartos_build/smartos-installer
+
+  # Copy mboot.c32 binary
+  tar xzf syslinux-4.05.tar.gz
+  cp syslinux-4.05/com32/mboot/mboot.c32 /tmp/smartos_build/smartos-installer
+
+  # Move the completed SmartOS dir
+  mv /tmp/smartos_build/smartos-installer /var/lib/tftpboot/default/
+
+  # Cleanup
+  umount -f /mnt/smartos
+  rmdir /mnt/smartos
+  rm -rf /tmp/smartos_build
+  EOH
+  not_if { File.exists?("#{node['tftp']['directory']}/default/smartos-installer/mboot.c32") }
+end
+

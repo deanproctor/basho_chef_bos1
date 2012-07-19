@@ -1,0 +1,11 @@
+= DESCRIPTION:
+Replaces /etc/hosts with details of all hosts in the chef cluster.
+
+= REQUIREMENTS:
+Works with Chef 0.10.4.
+
+= ATTRIBUTES:
+
+= USAGE:
+Just add the recipe to your nodes, no further configuration is required or
+supported.

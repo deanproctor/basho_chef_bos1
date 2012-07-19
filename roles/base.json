@@ -1,0 +1,20 @@
+{
+  "description": "",
+  "override_attributes": {
+  },
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "name": "base",
+  "env_run_lists": {
+  },
+  "run_list": [
+    "recipe[apt]",
+    "recipe[resolver]",
+    "recipe[autoetchosts]",
+    "recipe[ubuntu]",
+    "recipe[ssh::server]",
+    "recipe[man]"
+  ],
+  "default_attributes": {
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+  },
+  "name": "autoetchosts",
+  "maintainer_email": "carter@cartershanklin.com",
+  "attributes": {
+  },
+  "license": "Free for use",
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "maintainer": "Carter Shanklin",
+  "long_description": "= DESCRIPTION:\nReplaces /etc/hosts with details of all hosts in the chef cluster.\n\n= REQUIREMENTS:\nWorks with Chef 0.10.4.\n\n= ATTRIBUTES:\n\n= USAGE:\nJust add the recipe to your nodes, no further configuration is required or\nsupported.\n",
+  "version": "0.0.1",
+  "recommendations": {
+  },
+  "recipes": {
+  },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "replacing": {
+  },
+  "description": "Installs/Configures autoetchosts",
+  "providing": {
+  }
+}

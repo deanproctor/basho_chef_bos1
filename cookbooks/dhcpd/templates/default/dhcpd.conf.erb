@@ -1,0 +1,61 @@
+<% if @secret -%>
+ddns-update-style interim;
+ddns-updates on;
+<% if node[:dhcp][:ignore_clientupdates] -%>
+ignore client-updates;
+<% end %>
+
+key ddns-server {
+	algorithm hmac-md5;
+	secret <%= @secret %>;
+}
+
+zone <%= node[:dhcpd][:domain] %>. { 
+	primary node[:dhcpd][:nameservers ][0];
+	key ddns-server;
+}
+<% if node[:dhcp][:revdomainname] -%>
+zone <%= node[:dhcp][:revdomainname] %>. {
+	
+}
+<% end %>
+<% else -%>
+ddns-update-style none;
+<% end %>
+
+# option definitions common to all supported networks...
+option domain-name  "<%= node[:dhcpd][:domain] %>";
+option domain-name-servers <%= node[:dhcpd][:nameservers ].join(',') %>;
+
+<% if node[:dhcpd][:staticroutes] -%>
+option ms-classless-static-routes code 249 = array of integer 8;
+option rfc3442-classless-static-routes code 121 = array of integer 8;
+<% end %>
+
+default-lease-time	<%= node[:dhcpd][:default_lease_time] %>;
+max-lease-time	<%= node[:dhcpd][:max_lease_time] %>;
+
+# If this DHCP server is the official DHCP server for the local
+# network
+<% if node[:dhcpd][:authoritative] -%>
+authoritative;
+<% end %>
+
+log-facility local7;
+
+subnet <%= node[:dhcpd][:subnet] %>  netmask <%= node[:dhcpd][:netmask] %> {
+	range	<% if node[:dhcpd][:dynamicbootp] %>dynamic-bootp<% end %>	<%= node[:dhcpd][:range].join(' ') %>;
+<% if node[:dhcpd][:routers] -%>
+	option routers <%= node[:dhcpd][:routers] %>;
+<% end %>
+<% if node[:dhcpd][:filename] -%>
+	filename "<%= node[:dhcpd][:filename] %>";
+<% end %>
+<% if node[:dhcpd][:next_server] -%>
+	next-server <%= node[:dhcpd][:next_server] %>;
+<% end %>
+<% if node[:dhcpd][:staticroutes] -%>
+	option ms-classless-static-routes	<%= node[:dhcpd][:staticroutes].join(',') %>
+	option rfc3442-classless-static-routes	<%= node[:dhcpd][:staticroutes].join(',') %>
+<% end %>
+}

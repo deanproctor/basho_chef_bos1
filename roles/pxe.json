@@ -1,0 +1,18 @@
+{
+  "description": "",
+  "override_attributes": {
+  },
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "name": "pxe",
+  "env_run_lists": {
+  },
+  "run_list": [
+    "recipe[dhcpd]",
+    "recipe[tftp]",
+    "recipe[apache2]",
+    "recipe[pxe_dust]"
+  ],
+  "default_attributes": {
+  }
+}

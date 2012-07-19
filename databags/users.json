@@ -1,0 +1,14 @@
+[
+  {
+    "id": "dproctor",
+    "groups": [
+      "admin"
+    ],
+    "uid": 7001,
+    "full_name": "Dean Proctor",
+    "shell": "/bin/bash",
+    "local_files": true,
+    "ssh_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDT6Midj93QjEcAPLgHI/EoKJN2YcLt84eoEpdk/za5Py/koAUSCuKopVuWIv+ZG84x8FERMBzsKZBWqI5gRznZL2ahEYX0IpqncIK9hGDWvIk2nKg08YG5bzW2rxq4Ii46hnaD/C9oVFiGt1nCmygEqQ9WhNfdLkoM4OcbxVgPtJth4zEmdBbxubll1pjULT5rg7dc40FmhEGvajw9u+Ho7aOZ2xwprSgEfk2Rf3ErTh7bHieoBtfmnArF4lgul4n9/IhJIM6y7Lvw6vL2NwJTCNaNoObBtACa5Cx2Jv8RtMRSTFM/7O9EQ+ckLSsNbYaAhsh8qJOIkLbR+7PaBw+DmRJQSk6NKdjpRN2ZLeu4mYNpZubpZNK6sVMJIIGYt7n3JaX7Y4cXGiHIrdxI265lSiRK7LO1BOzSqsI3ucbbAbIgDGwjTdb4DZtYfAUYEe39As6Z4NadCveqdD8cznYPwZSBHHsgWXHnYbSORtp//P9D5LhauLw4MlCqHbhh1SrC6xMwbE53NarR572ph6RB8JOWVr5FwhP/ZPgvvRJr5fozJHfBtnD4NaLLRdL8mIpL8KvwRM/zMtJSOwwZCW2qe0mPskqAY7V/CV5pXLuzYE6RLB4hDvTsTmKl1j3hgBZjc1BnaKgvnVFIxeaoj00ZN10ndbU1zN75i4o6fIM4Xw== deanproctor@Deans-MacBook-Air.local",
+    "password": "$1$3B5QFCCT$wCqJJ7VM12CaVMkKX7w030"
+  }
+]

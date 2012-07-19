@@ -1,0 +1,16 @@
+[
+  {
+    "id": "default",
+    "arch": "amd64",
+    "platform": "ubuntu",
+    "version": "12.04",
+    "domain": "bos1",
+    "run_list": "role[base]",
+    "netboot_url": "http://archive.ubuntu.com/ubuntu/dists/precise/main/installer-amd64/current/images/netboot/netboot.tar.gz",
+    "user": {
+        "fullname": "Ubuntu",
+        "username": "ubuntu",
+        "crypted_password": "$6$9Vb50RXK$f7MH7LKcN3jzvFtFfroMD2tDuvvcsbRmTfsf5CmXbDudOmxSz8o7oEjprAAs0RBZ/lIgpbU.iTVbwlH9rBY141"
+    }
+  }
+]

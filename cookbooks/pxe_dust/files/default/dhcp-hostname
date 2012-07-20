@@ -1,0 +1,5 @@
+#!/bin/sh
+if [[ -n $new_host_name ]]; then
+  echo "$new_host_name" > /etc/hostname
+  /bin/hostname $new_host_name
+fi

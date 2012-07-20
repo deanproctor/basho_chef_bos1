@@ -56,27 +56,12 @@ cookbook_file "#{node['tftp']['directory']}/pxelinux.cfg/smartos.conf" do
   action :create_if_missing
 end
 
-#location of the full stack installers
-directory "/var/www/opscode-full-stack" do
-  mode "0755"
-end
-
-# remove existing install.sh if installlatest is true
-file "/var/www/opscode-full-stack/install.sh" do
-  only_if { node['pxe_dust']['installlatest'] }
-  action :delete
-end
-
-#for getting latest version of full stack installers
-remote_file "/var/www/opscode-full-stack/install.sh" do
-  source "http://opscode.com/chef/install.sh"
-end
-ruby_block "chef version" do
-  block do
-    cmd = Chef::ShellOut.new("grep release_version /var/www/opscode-full-stack/install.sh")
-    output = cmd.run_command
-    node['pxe_dust']['chefversion'] = output.stdout.split('"')[1]
-  end
+cookbook_file "/var/www/dhcp-hostname" do
+  source "dhcp-hostname"
+  mode 0644
+  user "root"
+  group "root"
+  action :create_if_missing
 end
 
 #loop over the other data bag items here
@@ -90,6 +75,7 @@ pxe_dust.each do |id|
   version = image['version'] || default['version']
   netboot_url = image['netboot_url'] || default['netboot_url']
   run_list = image['run_list'] || default['run_list']
+  platform = default['platform']
   if image['user']
     user_fullname = image['user']['fullname']
     user_username = image['user']['username']
@@ -142,44 +128,6 @@ pxe_dust.each do |id|
     mac_addresses = []
   end
 
-  # only get the full stack installers in use
-  case version
-  when "10.04","10.10"
-    platform = "ubuntu"
-    if arch.eql?("i386")
-      release = "ubuntu-10.04-i686"
-    elsif arch.eql?("amd64")
-      release = "ubuntu-10.04-x86_64"
-    end
-  when "11.04","11.10","12.04"
-    platform = "ubuntu"
-    if arch.eql?("i386")
-      release = "ubuntu-11.04-i686"
-    elsif arch.eql?("amd64")
-      release = "ubuntu-11.04-x86_64"
-    end
-  when "6.0.4"
-    platform = "debian"
-    if arch.eql?("i386")
-      release = "debian-6.0.1-i686"
-    elsif arch.eql?("amd64")
-      release = "debian-6.0.1-x86_64"
-    end
-  end
-
-  directory "/var/www/opscode-full-stack/#{release}" do
-    mode "0755"
-  end
-
-  installer = "chef-full_#{node['pxe_dust']['chefversion']}_#{arch}.deb"
-
-  #download the full stack installer
-  remote_file "/var/www/opscode-full-stack/#{release}/#{installer}" do
-    source "http://s3.amazonaws.com/opscode-full-stack/#{release}/#{installer}"
-    mode "0644"
-    action :create_if_missing
-  end
-
   mac_addresses.each do |mac_address|
     mac = mac_address.gsub(/:/, '-')
     mac.downcase!
@@ -187,7 +135,7 @@ pxe_dust.each do |id|
       source "ubuntu.conf.erb"
       mode "0644"
       variables(
-        :platform => platform,
+        :platform => default['platform'],
         :id => id,
         :arch => arch,
         :domain => domain
@@ -218,12 +166,6 @@ pxe_dust.each do |id|
     source "chef-bootstrap.sh.erb"
     mode "0644"
     variables(
-      :release => release,
-      :installer => installer,
-      :http_proxy => http_proxy,
-      :http_proxy_user => http_proxy_user,
-      :http_proxy_pass => http_proxy_pass,
-      :https_proxy => https_proxy,
       :run_list => run_list
       )
     action :create
@@ -257,8 +199,11 @@ end
 bash "build smartos tftp image" do
   user "root"
   code <<-EOH
+  SMARTOS_INSTALLER_DIR=/var/lib/tftpboot/smartos/smartos-installer/
+
   mkdir -p /mnt/smartos
-  mkdir -p /tmp/smartos_build/smartos-installer
+  mkdir -p /tmp/smartos_build
+  mkdir -p $SMARTOS_INSTALLER_DIR
 
   cd /tmp/smartos_build
 
@@ -270,20 +215,17 @@ bash "build smartos tftp image" do
 
   # Copy the platform directory from the SmartOS ISO
   mount -o loop,ro latest.iso /mnt/smartos
-  cp -Rp /mnt/smartos/platform /tmp/smartos_build/smartos-installer
+  cp -Rp /mnt/smartos/platform $SMARTOS_INSTALLER_DIR
 
   # Copy mboot.c32 binary
   tar xzf syslinux-4.05.tar.gz
-  cp syslinux-4.05/com32/mboot/mboot.c32 /tmp/smartos_build/smartos-installer
-
-  # Move the completed SmartOS dir
-  mv /tmp/smartos_build/smartos-installer /var/lib/tftpboot/default/
+  cp syslinux-4.05/com32/mboot/mboot.c32 $SMARTOS_INSTALLER_DIR
 
   # Cleanup
   umount -f /mnt/smartos
   rmdir /mnt/smartos
   rm -rf /tmp/smartos_build
   EOH
-  not_if { File.exists?("#{node['tftp']['directory']}/default/smartos-installer/mboot.c32") }
+  not_if { File.exists?("#{node['tftp']['directory']}/smartos/smartos-installer/mboot.c32") }
 end
 

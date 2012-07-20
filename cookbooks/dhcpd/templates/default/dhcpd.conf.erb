@@ -59,3 +59,11 @@ subnet <%= node[:dhcpd][:subnet] %>  netmask <%= node[:dhcpd][:netmask] %> {
 	option rfc3442-classless-static-routes	<%= node[:dhcpd][:staticroutes].join(',') %>
 <% end %>
 }
+
+<% @dhcpd_hosts.each do |host| %>
+host <%= host['id'] %> {
+  hardware ethernet <%= host['mac_address'] %>;
+  fixed-address <%= host['ip_address'] %>;
+  option host-name "<%= host['host_name'] %>";
+}
+<% end %>

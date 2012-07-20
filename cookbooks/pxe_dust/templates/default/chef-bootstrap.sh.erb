@@ -12,4 +12,4 @@ wget -O /etc/dhcp/dhclient-exit-hooks.d/hostname http://<%= node[:ipaddress] %>/
 # sets the hostname prior to running chef
 dhclient
 
-/usr/bin/chef-client -j /etc/chef/first-boot.json 2>&1 | /usr/bin/tee /root/chef-firstboot.log
+/usr/bin/chef-client -j /etc/chef/first-boot.json -N `cat /etc/hostname` 2>&1 | /usr/bin/tee /root/chef-firstboot.log

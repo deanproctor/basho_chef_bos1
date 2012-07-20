@@ -1,0 +1,116 @@
+[
+  {
+    "id": "r1s01_br0",
+    "host_name": "r1s01.bos1",
+    "mac_address": "1e:da:08:17:f6:32",
+    "ip_address": "10.0.27.11"
+  },
+  {
+    "id": "r1s02_br0",
+    "host_name": "r1s02.bos1",
+    "mac_address": "90:e2:ba:14:1f:1c",
+    "ip_address": "10.0.27.12"
+  },
+  {
+    "id": "r1s03_eth2",
+    "host_name": "r1s03.bos1",
+    "mac_address": "90:e2:ba:14:22:e8",
+    "ip_address": "10.0.27.13"
+  },
+  {
+    "id": "r1s04_eth2",
+    "host_name": "r1s04.bos1",
+    "mac_address": "90:e2:ba:14:20:58",
+    "ip_address": "10.0.27.14"
+  },
+  {
+    "id": "r1s05_eth2",
+    "host_name": "r1s05.bos1",
+    "mac_address": "90:e2:ba:14:21:fc",
+    "ip_address": "10.0.27.15"
+  },
+  {
+    "id": "r1s06_eth2",
+    "host_name": "r1s06.bos1",
+    "mac_address": "90:e2:ba:14:22:f0",
+    "ip_address": "10.0.27.16"
+  },
+  {
+    "id": "r1s07_eth2",
+    "host_name": "r1s07.bos1",
+    "mac_address": "90:e2:ba:14:1f:30",
+    "ip_address": "10.0.27.17"
+  },
+  {
+    "id": "r1s08_eth2",
+    "host_name": "r1s08.bos1",
+    "mac_address": "00:00:00:00:00:08",
+    "ip_address": "10.0.27.18"
+  },
+  {
+    "id": "r1s09_eth2",
+    "host_name": "r1s09.bos1",
+    "mac_address": "00:00:00:00:00:09",
+    "ip_address": "10.0.27.19"
+  },
+  {
+    "id": "r1s10_eth2",
+    "host_name": "r1s10.bos1",
+    "mac_address": "90:e2:ba:14:20:54",
+    "ip_address": "10.0.27.20"
+  },
+  {
+    "id": "r1s11_eth2",
+    "host_name": "r1s11.bos1",
+    "mac_address": "90:e2:ba:14:23:48",
+    "ip_address": "10.0.27.21"
+  },
+  {
+    "id": "r1s12_eth2",
+    "host_name": "r1s12.bos1",
+    "mac_address": "90:e2:ba:14:1f:04",
+    "ip_address": "10.0.27.22"
+  },
+  {
+    "id": "r1s13_eth2",
+    "host_name": "r1s13.bos1",
+    "mac_address": "90:e2:ba:14:23:98",
+    "ip_address": "10.0.27.23"
+  },
+  {
+    "id": "r1s14_eth2",
+    "host_name": "r1s14.bos1",
+    "mac_address": "90:e2:ba:14:21:80",
+    "ip_address": "10.0.27.24"
+  },
+  {
+    "id": "r1s15_eth2",
+    "host_name": "r1s15.bos1",
+    "mac_address": "90:e2:ba:14:24:00",
+    "ip_address": "10.0.27.25"
+  },
+  {
+    "id": "r1s16_eth2",
+    "host_name": "r1s16.bos1",
+    "mac_address": "90:e2:ba:14:23:94",
+    "ip_address": "10.0.27.26"
+  },
+  {
+    "id": "r1s17_eth2",
+    "host_name": "r1s17.bos1",
+    "mac_address": "90:e2:ba:14:1f:2c",
+    "ip_address": "10.0.27.27"
+  },
+  {
+    "id": "r1s18_eth2",
+    "host_name": "r1s18.bos1",
+    "mac_address": "90:e2:ba:14:23:fc",
+    "ip_address": "10.0.27.28"
+  },
+  {
+    "id": "dean1_eth0",
+    "host_name": "dean1.bos1",
+    "mac_address": "00:16:5e:25:05:17",
+    "ip_address": "10.0.29.123"
+  }
+]

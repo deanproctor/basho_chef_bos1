@@ -27,12 +27,15 @@ template node[:dhcpd][:default_file] do
   notifies(:restart, resources(:service => "dhcpd"))
 end
 
+dhcpd_hosts = search(:dhcpd, "*:*")
+
 template node[:dhcpd][:dhcpd_conf_file] do
   source "dhcpd.conf.erb"
   owner "root"
   group "root"
   mode 0644
   variables(
+    :dhcpd_hosts => dhcpd_hosts
 #    :secret => search(:zones, "domain:#{node[:dhcpd][:domain]} AND ddns:true" ).first["secret"]
     )
   notifies(:restart, resources(:service => "dhcpd"))

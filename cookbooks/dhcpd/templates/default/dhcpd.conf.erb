@@ -43,27 +43,49 @@ authoritative;
 
 log-facility local7;
 
-subnet <%= node[:dhcpd][:subnet] %>  netmask <%= node[:dhcpd][:netmask] %> {
-	range	<% if node[:dhcpd][:dynamicbootp] %>dynamic-bootp<% end %>	<%= node[:dhcpd][:range].join(' ') %>;
-<% if node[:dhcpd][:routers] -%>
-	option routers <%= node[:dhcpd][:routers] %>;
-<% end %>
-<% if node[:dhcpd][:filename] -%>
-	filename "<%= node[:dhcpd][:filename] %>";
-<% end %>
-<% if node[:dhcpd][:next_server] -%>
-	next-server <%= node[:dhcpd][:next_server] %>;
-<% end %>
-<% if node[:dhcpd][:staticroutes] -%>
-	option ms-classless-static-routes	<%= node[:dhcpd][:staticroutes].join(',') %>
-	option rfc3442-classless-static-routes	<%= node[:dhcpd][:staticroutes].join(',') %>
-<% end %>
-}
+shared-network "BOS1" {
+  subnet <%= node[:dhcpd][:subnet] %>  netmask <%= node[:dhcpd][:netmask] %> {
+    range <% if node[:dhcpd][:dynamicbootp] %>dynamic-bootp<% end %> <%= node[:dhcpd][:range].join(' ') %>;
+  <% if node[:dhcpd][:routers] -%>
+    option routers <%= node[:dhcpd][:routers] %>;
+  <% end %>
+  <% if node[:dhcpd][:filename] -%>
+    filename "<%= node[:dhcpd][:filename] %>";
+  <% end %>
+  <% if node[:dhcpd][:next_server] -%>
+    next-server <%= node[:dhcpd][:next_server] %>;
+  <% end %>
+  <% if node[:dhcpd][:staticroutes] -%>
+    option ms-classless-static-routes <%= node[:dhcpd][:staticroutes].join(',') %>
+    option rfc3442-classless-static-routes <%= node[:dhcpd][:staticroutes].join(',') %>
+  <% end %>
 
-<% @dhcpd_hosts.each do |host| %>
-host <%= host['id'] %> {
-  hardware ethernet <%= host['mac_address'] %>;
-  fixed-address <%= host['ip_address'] %>;
-  option host-name "<%= host['host_name'] %>";
+  <% @dhcpd_hosts.each do |host| %>
+    <% if host['ip_address'].match(/^10/) -%>
+    host <%= host['id'] %> {
+      hardware ethernet <%= host['mac_address'] %>;
+      fixed-address <%= host['ip_address'] %>;
+      <% if host['host_name'] -%>
+      option host-name "<%= host['host_name'] %>";
+      <% end %>
+    }
+    <% end %>
+  <% end %>
+  }
+
+  subnet 172.16.24.0 netmask 255.255.248.0 {
+    option routers 172.16.27.1;
+
+  <% @dhcpd_hosts.each do |host| %>
+    <% if host['ip_address'].match(/^172/) -%>
+    host <%= host['id'] %> {
+      hardware ethernet <%= host['mac_address'] %>;
+      fixed-address <%= host['ip_address'] %>;
+      <% if host['host_name'] -%>
+      option host-name "<%= host['host_name'] %>";
+      <% end %>
+    }
+    <% end %>
+  <% end %>
+  }
 }
-<% end %>

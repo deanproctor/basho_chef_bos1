@@ -13,7 +13,9 @@
     "recipe[autoetchosts]",
     "recipe[ubuntu]",
     "recipe[ssh::server]",
-    "recipe[man]"
+    "recipe[man]",
+    "recipe[network_interfaces]",
+    "recipe[bprobe]"
   ],
   "default_attributes": {
   }

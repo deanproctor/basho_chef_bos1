@@ -1,0 +1,14 @@
+auto lo
+iface lo inet loopback
+
+<% @interfaces.each do |iface| -%>
+auto <%= iface['device'] %>
+iface <%= iface['device'] %> inet <%= iface['type'] %>
+  <% if iface['bridge'] -%>
+  bridge_ports <%= iface['bridge_ports'] %>
+  bridge_stp <%= iface['bridge_stp'] %>
+  bridge_fd 0
+  bridge_maxwait 0
+  <% end %>
+
+<% end %>

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ "$reason" != "BOUND" ]; then
+  exit 0
+fi 
+
+case $new_network_number in
+"10.0.24.0")
+  table="INT"
+  ;;
+"172.16.24.0")
+  table="MGMT"
+  ;;
+*)
+  echo "Invalid DHCP network"
+  exit 1
+  ;;
+esac
+
+ip rule del table $table
+ip route del table $table
+ip route flush cache
+
+ip route add default via $new_routers dev $interface table $table 
+ip rule add from $new_network_number/21 table $table

@@ -1,0 +1,139 @@
+[
+  {
+    "id": "r1s01_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "manual" }, 
+      { "device": "br0",  "type": "dhcp", "bridge": true, "bridge_ports": "eth0 eth2", "bridge_stp": "on" } 
+    ]
+  },
+  {
+    "id": "r1s02_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "manual" }, 
+      { "device": "br0",  "type": "dhcp", "bridge": true, "bridge_ports": "eth2", "bridge_stp": "off" } 
+    ]
+  },
+  {
+    "id": "r1s03_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s04_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s05_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s06_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s07_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s08_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s09_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s10_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s11_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s12_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s13_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s14_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s15_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s16_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s17_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "dhcp" } 
+    ]
+  },
+  {
+    "id": "r1s18_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" }, 
+      { "device": "eth2", "type": "manual" }, 
+      { "device": "br0", "type": "dhcp", "bridge": true, "bridge_ports": "eth2", "bridge_stp": "on" } 
+    ]
+  },
+  {
+    "id": "dean1_bos1",
+    "interfaces": [
+      { "device": "eth0", "type": "dhcp" },
+      { "device": "eth2", "type": "manual" }, 
+      { "device": "br0", "type": "dhcp", "bridge": true, "bridge_ports": "eth2", "bridge_stp": "on" } 
+    ]
+  }
+]

@@ -15,7 +15,9 @@
     "recipe[ssh::server]",
     "recipe[man]",
     "recipe[network_interfaces]",
-    "recipe[bprobe]"
+    "recipe[ntp]",
+    "recipe[bprobe]",
+    "recipe[authorized_keys]"
   ],
   "default_attributes": {
   }

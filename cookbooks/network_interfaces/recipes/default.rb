@@ -4,6 +4,14 @@
 #
 # Copyright 2012, Basho Technologies, Inc.
 #
+
+case node[:platform]
+when "ubuntu","debian"
+  package "ifenslave" do
+    action :install
+  end
+end
+
 node_id = node[:fqdn].gsub('.', '_')
 
 network_interfaces = search(:network_interfaces, %Q{id:"#{node_id}"})

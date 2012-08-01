@@ -4,11 +4,20 @@ iface lo inet loopback
 <% @interfaces.each do |iface| -%>
 auto <%= iface['device'] %>
 iface <%= iface['device'] %> inet <%= iface['type'] %>
+  <% if iface['bond_slave'] -%>
+  bond-master <%= iface['bond_name'] %>
+  <% end %>
   <% if iface['bridge'] -%>
   bridge_ports <%= iface['bridge_ports'] %>
   bridge_stp <%= iface['bridge_stp'] %>
   bridge_fd 0
   bridge_maxwait 0
   <% end %>
-
+  <% if iface['device'] == 'bond0' -%>
+    hwaddress <%= iface['hwaddress'] %>
+    bond-mode <%= iface['bond-mode'] %>
+    bond-miimon <%= iface['bond-miimon'] %>
+    bond-lacp-rate <%= iface['bond-lacp-rate'] %>
+    bond-slaves <%= iface['bond-slaves'] %>
+  <% end %>
 <% end %>

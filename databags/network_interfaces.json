@@ -19,105 +19,134 @@
     "id": "r1s03_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether b0:0b:ba:14:22:e7", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s04_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether b0:0b:ba:14:20:60", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" } 
     ]
   },
   {
     "id": "r1s05_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "b0:0b:ba:14:21:fa", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s06_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether b0:0b:ba:14:22:f3", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s07_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether b0:0b:ba:14:1f:33", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s08_bos1",
     "interfaces": [
-      { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth0", "type": "dhcp" },
+      { "device": "eth2", "type": "manual" },
+      { "device": "br0",  "type": "dhcp", "bridge": true, "bridge_ports": "eth2", "bridge_stp": "on" }
     ]
   },
   {
     "id": "r1s09_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether b0:0b:52:82:b9:05", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s10_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether b0:0b:ba:14:20:57", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s11_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether b0:0b:ba:14:23:51", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s12_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether b0:0b:ba:14:1f:07", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s13_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether b0:0b:ba:14:23:95", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" } 
     ]
   },
   {
     "id": "r1s14_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether b0:0b:ba:14:21:83", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s15_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether  b0:0b:ba:14:24:03", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s16_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether  b0:0b:ba:14:23:97", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {
     "id": "r1s17_bos1",
     "interfaces": [
       { "device": "eth0", "type": "dhcp" }, 
-      { "device": "eth2", "type": "dhcp" } 
+      { "device": "eth2", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "eth3", "type": "manual","bond_slave": true,"bond_name": "bond0" },
+      { "device": "bond0", "type": "dhcp",  "hwaddress": "ether  b0:0b:ba:14:1f:2a", "bond-mode": "active-backup","bond-miimon": "100", "bond-lacp-rate": "1", "bond-slaves": "none" }
     ]
   },
   {

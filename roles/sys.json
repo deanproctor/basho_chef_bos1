@@ -1,0 +1,15 @@
+{
+  "description": "",
+  "override_attributes": {
+  },
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "name": "sys",
+  "env_run_lists": {
+  },
+  "run_list": [
+    "recipe[rancid]"
+  ],
+  "default_attributes": {
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "override_attributes": {
+  },
+  "description": "Role for proserv sudo permissions",
+  "default_attributes": {
+    "authorization": {
+      "sudo": {
+        "passwordless": false,
+        "users": [
+
+        ],
+        "groups": [
+          "sudo",
+          "proserv"
+        ]
+      }
+    }
+  },
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "env_run_lists": {
+  },
+  "run_list": [
+  ],
+  "name": "proserv"
+}

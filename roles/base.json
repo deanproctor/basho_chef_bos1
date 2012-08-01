@@ -1,24 +1,38 @@
 {
-  "description": "",
-  "override_attributes": {
+  "default_attributes": {
+    "authorization": {
+      "sudo": {
+        "passwordless": false,
+        "groups": [
+          "sudo",
+          "devops"
+        ],
+        "users": [
+
+        ]
+      }
+    }
   },
   "json_class": "Chef::Role",
-  "chef_type": "role",
-  "name": "base",
-  "env_run_lists": {
+  "override_attributes": {
   },
   "run_list": [
     "recipe[apt]",
     "recipe[resolver]",
     "recipe[autoetchosts]",
     "recipe[ubuntu]",
-    "recipe[ssh::server]",
     "recipe[man]",
     "recipe[network_interfaces]",
     "recipe[ntp]",
     "recipe[bprobe]",
-    "recipe[authorized_keys]"
+    "recipe[authorized_keys]",
+    "recipe[ssh]",
+    "recipe[openldap::auth]",
+    "recipe[sudo]"
   ],
-  "default_attributes": {
-  }
+  "name": "base",
+  "env_run_lists": {
+  },
+  "chef_type": "role",
+  "description": ""
 }

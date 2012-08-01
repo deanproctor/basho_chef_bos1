@@ -1,0 +1,26 @@
+{
+  "override_attributes": {
+  },
+  "description": "Role for engineering sudo permissions",
+  "default_attributes": {
+    "authorization": {
+      "sudo": {
+        "passwordless": false,
+        "users": [
+
+        ],
+        "groups": [
+          "sudo",
+          "engineering"
+        ]
+      }
+    }
+  },
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "env_run_lists": {
+  },
+  "run_list": [
+  ],
+  "name": "engineering"
+}

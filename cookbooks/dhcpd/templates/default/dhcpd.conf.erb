@@ -32,6 +32,10 @@ option ms-classless-static-routes code 249 = array of integer 8;
 option rfc3442-classless-static-routes code 121 = array of integer 8;
 <% end %>
 
+<% if node[:dhcpd][:filename] -%>
+  filename "<%= node[:dhcpd][:filename] %>";
+<% end %>
+
 default-lease-time	<%= node[:dhcpd][:default_lease_time] %>;
 max-lease-time	<%= node[:dhcpd][:max_lease_time] %>;
 
@@ -48,9 +52,6 @@ shared-network "BOS1" {
     range <% if node[:dhcpd][:dynamicbootp] %>dynamic-bootp<% end %> <%= node[:dhcpd][:range].join(' ') %>;
   <% if node[:dhcpd][:routers] -%>
     option routers <%= node[:dhcpd][:routers] %>;
-  <% end %>
-  <% if node[:dhcpd][:filename] -%>
-    filename "<%= node[:dhcpd][:filename] %>";
   <% end %>
   <% if node[:dhcpd][:next_server] -%>
     next-server <%= node[:dhcpd][:next_server] %>;

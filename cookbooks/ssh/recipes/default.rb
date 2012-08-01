@@ -1,3 +1,7 @@
+require_recipe 'sudo'
+
+allow_groups = node['authorization']['sudo']['groups'].map{ |v|  %Q(#{v}) }.join(' ')
+
 service "ssh" do
   supports :restart => true, :reload => true
   action :enable
@@ -25,6 +29,9 @@ template "/etc/ssh/sshd_config" do
   mode 0644
   owner "root"
   group "root"
+  variables(
+    :allow_groups => allow_groups
+  )
   notifies :restart, resources(:service => "ssh")
 end
 
